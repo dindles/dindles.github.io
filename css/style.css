@@ -1,0 +1,60 @@
+/* ===
+   ToC 
+   === */
+
+/* ======
+   GLOBAL 
+   ====== */
+
+* {
+  text-align: center;
+}
+
+/* ==========
+   TYPOGRAPHY 
+   ========== */
+
+* {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.timbo {
+  font-family: "Climate Crisis", cursive, Courier, monospace;
+  color: darkslateblue;
+}
+
+/* =======
+   COLOURS
+   ======= */
+
+/* =========
+   ALIGNMENT 
+   ========= */
+
+main {
+  display: grid;
+  justify-items: center;
+}
+
+.timbobuttons {
+  display: flex;
+  gap: 10px;
+}
+
+.creepin {
+  margin: 1rem;
+  margin-bottom: 3rem;
+}
+
+/* =====
+   STYLE 
+   ===== */
+
+.timbobutton {
+  background-color: hsl(218, 43%, 72%);
+  border: medium solid hsl(217, 42%, 57%);
+}
+
+.timbo {
+  position: relative;
+}
