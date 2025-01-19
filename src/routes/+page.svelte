@@ -5,11 +5,11 @@
   h1 {
     color: #3e3e3e;
     text-transform: uppercase;
-    font-size: 4em;
+    font-size: 4rem;
     font-weight: 100;
   }
   p {
     color: #79009b;
-    font-size: 1.5em;
+    font-size: 1.5rem;
   }
 </style>
