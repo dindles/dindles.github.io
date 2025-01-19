@@ -1,6 +1,5 @@
 <h1>dindles</h1>
 <p>a chill website</p>
-<p>again</p>
 
 <style>
   h1 {
@@ -11,5 +10,6 @@
   }
   p {
     color: #79009b;
+    font-size: 1.5em;
   }
 </style>
