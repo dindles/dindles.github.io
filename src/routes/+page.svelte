@@ -1,5 +1,11 @@
+<script lang="ts">
+  import Neko from '$lib/components/neko.svelte'
+</script>
+
 <h1>dindles</h1>
 <p>a chill website</p>
+
+<Neko type="kina" />
 
 <style>
   h1 {
