@@ -18,31 +18,33 @@
 <div class="flex justify-center gap-6 category">
   <!-- SOUNDS -->
   <a href="/sound">
-    <button onclick={soundClick} onfocus={() => (categoryState.soundVis = 'visible')} class="btn-category">
+    <button
+      onclick={soundClick}
+      onfocus={() => (categoryState.soundVis = 'visible')}
+      class="btn-category"
+    >
       <!-- shaking maracas -->
       {#if categoryState.soundVis === 'visible'}
-        <p id="maracasAnim" class="emoji">
-          🪇
-        </p>
-      {/if}
-      {#if categoryState.soundVis === 'hidden'}
-        <p class="emoji">
-          🪇
-        </p>
+        <p id="maracasAnim" class="emoji">🪇</p>
+      {:else}
+        <p class="emoji">🪇</p>
       {/if}
     </button>
   </a>
 
   <!-- CODE -->
   <a href="/code">
-    <button onclick={codeClick} onfocus={() => (categoryState.codeVis = 'visible')} class="btn-category">
+    <button
+      onclick={codeClick}
+      onfocus={() => (categoryState.codeVis = 'visible')}
+      class="btn-category"
+    >
       <!-- scrolling code -->
       {#if categoryState.codeVis === 'visible'}
         <div aria-label="let i = 0" class="pt-2 pointer-events-none h-11">
           <span id="typingAnim" class="font-mono"></span>
         </div>
-      {/if}
-      {#if categoryState.codeVis === 'hidden'}
+      {:else}
         <p class="font-mono pointer-events-none">i = 0</p>
       {/if}
     </button>

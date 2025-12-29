@@ -21,7 +21,7 @@
 <!-- Access the browser's view transitions API on navigation -->
 <ViewTransitions />
 
-<body class="flex flex-col min-h-screen bg-surface">
+<div class="flex flex-col min-h-screen bg-surface">
   <Header />
   <main class="flex-grow">
     <Intro />
@@ -29,18 +29,18 @@
     {@render children?.()}
   </main>
   <Footer />
-</body>
+</div>
 
 <style>
   /* Remove scrollbar without preventing scrolling */
   /* For Webkit-based browsers (Chrome, Safari and Opera) */
-  body::-webkit-scrollbar {
+  :global(body::-webkit-scrollbar) {
     display: none;
   }
 
   /* For IE, Edge and Firefox */
   /* todo: firefox testing */
-  body {
+  :global(body) {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
