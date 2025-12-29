@@ -2,16 +2,20 @@
   import Neko from '$lib/components/neko.svelte'
 </script>
 
-<h1>dindles</h1>
-<p>p.l.u.r.</p>
+<div class="container">
+  <h1>dindles</h1>
+  <p>p.l.u.r.</p>
+</div>
 
 <Neko type="kina" />
 
 <style>
-  global:html {
+  :global(html) {
     margin: 0;
     padding: 0;
     font-family: 'Courier New', Courier, monospace;
+  }
+  .container {
     background-color: #f0f0f0;
     display: flex;
     flex-direction: column;
