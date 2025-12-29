@@ -33,17 +33,15 @@
 	];
 </script>
 
-<main class="flex-grow">
+<main class="code-page">
 	{#each code_projects as project}
-		<div class="p-6 pb-0">
+		<div class="project-wrapper">
 			<div class="card-project {project.bgColor}">
-				<div>
-					<h2 class="pt-6 {project.fontColor} {project.font}">{project.name}</h2>
+				<h2 class="project-title">{project.name}</h2>
+				<div class="project-description">
+					<p class="description-text">{project.description}</p>
 				</div>
-				<div class="p-6 max-w-48">
-					<p class="font-semibold {project.fontColor}">{project.description}</p>
-				</div>
-				<div class="flex flex-wrap justify-center pb-6 gap-x-4">
+				<div class="project-tags">
 					{#each project.stack as item}
 						<div class="project-tag">
 							<span>{item}</span>
@@ -56,24 +54,56 @@
 </main>
 
 <style>
+	.code-page {
+		flex: 1 1 0%;
+	}
+
+	.project-wrapper {
+		padding: 1.5rem;
+		padding-bottom: 0;
+	}
+
 	.card-project {
 		width: 20rem;
 		margin: 0 auto;
 		text-align: center;
-		border: var(--border-width-2) dotted var(--color-secondary-700);
+		border: 2px dotted var(--colour-secondary);
 		cursor: pointer;
-		transition: border-color var(--transition-base);
+		transition: border-color 200ms ease;
 	}
 
 	.card-project:hover {
-		border-color: var(--color-secondary-500);
+		border-color: var(--colour-primary);
+	}
+
+	.project-title {
+		padding-top: 1.5rem;
+		color: var(--colour-text);
+	}
+
+	.project-description {
+		padding: 1.5rem;
+		max-width: 12rem;
+	}
+
+	.description-text {
+		font-weight: 600;
+		color: var(--colour-text);
+	}
+
+	.project-tags {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding-bottom: 1.5rem;
+		column-gap: 1rem;
 	}
 
 	.project-tag {
 		font-family: var(--font-mono);
-		border: var(--border-width-1) solid var(--color-gray-400);
-		background-color: var(--color-primary-100);
+		border: 1px solid var(--colour-secondary);
+		background-color: var(--colour-primary);
 		max-width: fit-content;
-		padding: var(--space-1) var(--space-2);
+		padding: 0.25rem 0.5rem;
 	}
 </style>

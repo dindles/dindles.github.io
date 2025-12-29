@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { categoryState } from '$lib/state/state-stores.svelte'
+  import { categoryState } from '$lib/state/state.svelte'
 
   // Sets state on clicks
   function soundClick() {
@@ -15,7 +15,7 @@
   }
 </script>
 
-<div class="flex justify-center gap-6 category">
+<div class="categories">
   <!-- SOUNDS -->
   <a href="/sound">
     <button
@@ -41,32 +41,38 @@
     >
       <!-- scrolling code -->
       {#if categoryState.codeVis === 'visible'}
-        <div aria-label="let i = 0" class="pt-2 pointer-events-none h-11">
-          <span id="typingAnim" class="font-mono"></span>
+        <div aria-label="let i = 0" class="code-display">
+          <span id="typingAnim" class="code-text"></span>
         </div>
       {:else}
-        <p class="font-mono pointer-events-none">i = 0</p>
+        <p class="code-text code-static">i = 0</p>
       {/if}
     </button>
   </a>
 </div>
 
 <style>
-  /* Button Styles */
+  .categories {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    user-select: none;
+  }
+
   .btn-category {
     display: inline-block;
     width: 5rem;
     text-align: center;
     aspect-ratio: 1 / 1;
-    border: var(--border-width-2) double var(--color-secondary-700);
-    border-radius: var(--radius-full);
+    border: 2px double var(--colour-secondary);
+    border-radius: 9999px;
     cursor: pointer;
-    box-shadow: var(--shadow-secondary);
-    transition: all var(--transition-base);
+    box-shadow: 3px 3px 0 var(--colour-secondary);
+    transition: all 200ms ease;
   }
 
   .btn-category:hover {
-    border-color: var(--color-secondary-500);
+    border-color: var(--colour-primary);
   }
 
   .btn-category:active {
@@ -75,16 +81,29 @@
   }
 
   .emoji {
-    padding-top: var(--space-1);
+    padding-top: 0.25rem;
     margin: 0 auto;
-    font-size: var(--text-4xl);
+    font-size: 2rem;
     font-family: var(--font-emoji);
-    color: var(--color-secondary-700);
+    color: var(--colour-secondary);
     pointer-events: none;
   }
 
-  /* SOUND */
-  /* Maraca-shaking animation*/
+  .code-display {
+    padding-top: 0.5rem;
+    pointer-events: none;
+    height: 2.75rem;
+  }
+
+  .code-text {
+    font-family: var(--font-mono);
+  }
+
+  .code-static {
+    pointer-events: none;
+  }
+
+  /* Maraca-shaking animation */
   #maracasAnim {
     animation: shaking 0.5s infinite;
   }
@@ -113,16 +132,7 @@
     }
   }
 
-  /* CODE */
-  /* prevents text highlighting on click */
-  .category {
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
-  }
-
-  /* Typing animation – based on a CodePen by Alvaro Montoro*/
+  /* Typing animation – based on a CodePen by Alvaro Montoro */
   @keyframes typing {
     0%,
     50% {

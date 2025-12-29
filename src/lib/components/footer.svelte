@@ -1,19 +1,27 @@
 <script lang="ts">
 </script>
 
-<div class="flex justify-center mt-6 bg-primary">
-  <!-- contact link -->
-
-  <a
-    href="mailto:dindles@proton.me"
-    class="btn-link font-mono text-lg text-secondary"
-  >
+<div class="footer">
+  <a href="mailto:dindles@proton.me" class="contact-link">
     say hi.
   </a>
 </div>
 
 <style>
-  .btn-link:hover {
-    background-color: var(--color-surface-300);
+  .footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    background-color: var(--colour-primary);
+  }
+
+  .contact-link {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--colour-secondary);
+  }
+
+  .contact-link:hover {
+    background-color: var(--colour-primary);
   }
 </style>

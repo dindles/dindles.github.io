@@ -6,6 +6,7 @@
   import Intro from '$lib/components/intro.svelte'
   import Categories from '$lib/components/categories.svelte'
   import ViewTransitions from '$lib/components/view-transitions.svelte'
+  import ThemeApplier from '$lib/components/theme-applier.svelte'
   interface Props {
     children?: import('svelte').Snippet
   }
@@ -20,10 +21,11 @@
 
 <!-- Access the browser's view transitions API on navigation -->
 <ViewTransitions />
+<ThemeApplier />
 
-<div class="flex flex-col min-h-screen bg-surface">
+<div class="page-wrapper">
   <Header />
-  <main class="flex-grow">
+  <main class="main-content">
     <Intro />
     <Categories />
     {@render children?.()}
@@ -32,16 +34,24 @@
 </div>
 
 <style>
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--colour-surface);
+  }
+
+  .main-content {
+    flex: 1 1 0%;
+  }
+
   /* Remove scrollbar without preventing scrolling */
-  /* For Webkit-based browsers (Chrome, Safari and Opera) */
   :global(body::-webkit-scrollbar) {
     display: none;
   }
 
-  /* For IE, Edge and Firefox */
-  /* todo: firefox testing */
   :global(body) {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 </style>

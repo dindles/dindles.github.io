@@ -6,15 +6,15 @@
 	}
 </script>
 
-<div class="flex flex-col gap-8 p-4">
-	<div class="flex justify-center relative min-h-[400px]">
+<div class="sound-page">
+	<div class="embed-container">
 		{#if !iframesLoaded[0]}
-			<div class="absolute inset-0 flex items-center justify-center bg-surface rounded-lg z-10">
+			<div class="loading-overlay">
 				<div class="spinner"></div>
 			</div>
 		{/if}
 		<iframe
-			class="w-full max-w-lg aspect-square rounded-lg"
+			class="embed-frame"
 			title="Dindles - Sugarcane"
 			src="https://bandcamp.com/EmbeddedPlayer/album=243964234/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/"
 			seamless
@@ -24,14 +24,14 @@
 		</iframe>
 	</div>
 
-	<div class="flex justify-center relative min-h-[400px]">
+	<div class="embed-container">
 		{#if !iframesLoaded[1]}
-			<div class="absolute inset-0 flex items-center justify-center bg-surface rounded-lg z-10">
+			<div class="loading-overlay">
 				<div class="spinner"></div>
 			</div>
 		{/if}
 		<iframe
-			class="w-full max-w-lg aspect-square rounded-lg"
+			class="embed-frame"
 			title="Dindles - A Neglected Corner of an Orbital Farm"
 			src="https://bandcamp.com/EmbeddedPlayer/album=2843291190/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/"
 			seamless
@@ -45,16 +45,47 @@
 </div>
 
 <style>
-	.min-h-\[400px\] {
+	.sound-page {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		padding: 1rem;
+	}
+
+	.embed-container {
+		display: flex;
+		justify-content: center;
+		position: relative;
 		min-height: 400px;
+	}
+
+	.loading-overlay {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--colour-surface);
+		border-radius: 0.5rem;
+		z-index: 10;
+	}
+
+	.embed-frame {
+		width: 100%;
+		max-width: 32rem;
+		aspect-ratio: 1 / 1;
+		border-radius: 0.5rem;
 	}
 
 	.spinner {
 		width: 3rem;
 		height: 3rem;
-		border: 4px solid var(--color-gray-300);
-		border-top-color: var(--color-gray-600);
-		border-radius: var(--radius-full);
+		border: 4px solid var(--colour-surface);
+		border-top-color: var(--colour-text);
+		border-radius: 9999px;
 		animation: spin 1s linear infinite;
 	}
 
