@@ -1,18 +1,30 @@
 <script lang="ts">
-  // No state needed - animations controlled via CSS
+  import { page } from '$app/state'
+
+  // current page for active animations
+  const is_on_sound_page = $derived(page.url.pathname === '/sound')
+  const is_on_code_page = $derived(page.url.pathname === '/code')
 </script>
 
 <div class="categories">
   <!-- SOUNDS -->
   <a href="/sound" aria-label="Sound projects">
-    <button class="btn-category btn-sound" aria-label="Sound projects">
+    <button
+      class="btn-category btn-sound"
+      class:active={is_on_sound_page}
+      aria-label="Sound projects"
+    >
       <p class="emoji maraca">🪇</p>
     </button>
   </a>
 
   <!-- CODE -->
   <a href="/code" aria-label="Code projects">
-    <button class="btn-category btn-code" aria-label="Code projects">
+    <button
+      class="btn-category btn-code"
+      class:active={is_on_code_page}
+      aria-label="Code projects"
+    >
       <div class="code-display">
         <span class="code-text typing"></span>
       </div>
@@ -26,6 +38,10 @@
     justify-content: center;
     gap: 1.5rem;
     user-select: none;
+  }
+
+  .categories a {
+    text-decoration: none;
   }
 
   .btn-category {
@@ -67,18 +83,20 @@
     font-family: var(--font-mono);
   }
 
-  /* Maraca-shaking animation - triggers on hover/focus */
+  /* Maraca-shaking animation - triggers on hover/focus/active page */
   .maraca {
     animation: none;
   }
 
   .btn-sound:hover .maraca,
-  .btn-sound:focus-visible .maraca {
+  .btn-sound:focus-visible .maraca,
+  .btn-sound.active .maraca {
     animation: shaking 0.5s infinite;
   }
 
   @keyframes shaking {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0) rotate(0deg);
     }
     25% {
@@ -98,56 +116,82 @@
     }
   }
 
-  /* Typing animation – based on a CodePen by Alvaro Montoro */
+  /* Typing animation – based on a CodePen by Alvaro Montoro: https://codepen.io/alvaromontoro/pen/rNwVpdd */
   @keyframes typing {
+    /* Start at 'i = 0' (matches static state) */
     0%,
-    50% {
-      content: '';
-    }
-    5%,
-    45% {
-      content: 'i';
-    }
-    10%,
-    40% {
-      content: 'i ';
-    }
-    15%,
-    35% {
-      content: 'i =';
-    }
-    20%,
-    30% {
-      content: 'i = ';
-    }
-    25%,
-    29% {
+    10% {
       content: 'i = 0';
     }
-
-    50%,
-    96.8605% {
+    /* Delete back */
+    12% {
+      content: 'i = ';
+    }
+    14% {
+      content: 'i =';
+    }
+    16% {
+      content: 'i ';
+    }
+    18% {
+      content: 'i';
+    }
+    20%,
+    47% {
       content: '';
     }
-    55%,
-    90% {
+
+    /* Type 'j = 0' */
+    49% {
       content: 'j';
     }
-    60%,
-    85% {
+    52% {
       content: 'j ';
     }
-    65%,
-    80% {
+    54% {
       content: 'j =';
     }
-    70%,
-    75% {
+    56% {
       content: 'j = ';
     }
-    72%,
-    73% {
+    58%,
+    68% {
       content: 'j = 0';
+    }
+
+    /* Delete back */
+    70% {
+      content: 'j = ';
+    }
+    72% {
+      content: 'j =';
+    }
+    74% {
+      content: 'j ';
+    }
+    76% {
+      content: 'j';
+    }
+    78%,
+    93% {
+      content: '';
+    }
+
+    /* Type back to 'i = 0' for seamless loop */
+    95% {
+      content: 'i';
+    }
+    97% {
+      content: 'i ';
+    }
+    98% {
+      content: 'i =';
+    }
+    99% {
+      content: 'i = ';
+    }
+    100% {
+      content: 'i = 0';
     }
   }
 
@@ -167,7 +211,7 @@
   }
 
   .typing::before {
-    content: '';
+    content: 'i = 0';
     animation: none;
   }
 
@@ -178,12 +222,14 @@
   }
 
   .btn-code:hover .typing::before,
-  .btn-code:focus-visible .typing::before {
+  .btn-code:focus-visible .typing::before,
+  .btn-code.active .typing::before {
     animation: typing 4.5s infinite;
   }
 
   .btn-code:hover .typing::after,
-  .btn-code:focus-visible .typing::after {
+  .btn-code:focus-visible .typing::after,
+  .btn-code.active .typing::after {
     animation: blink 0.5s linear infinite;
   }
 

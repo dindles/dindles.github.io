@@ -2,10 +2,9 @@
 </script>
 
 <div class="footer">
-  <a href="mailto:dindles@proton.me" class="contact-link">
-    say hi.
-  </a>
+  <a href="mailto:dan@dindles.net" class="contact-link"> say hi. </a>
 </div>
+``
 
 <style>
   .footer {
