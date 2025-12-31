@@ -48,12 +48,14 @@
     aspect-ratio: 1 / 1;
     border: var(--border-button-primary);
     border-radius: var(--radius-full);
+    background-color: transparent;
     cursor: pointer;
     box-shadow: 3px 3px 0 var(--colour-secondary);
     transition: all var(--transition-default);
   }
 
   .btn-category:hover {
+    background-color: var(--colour-surface-light);
     border-color: var(--colour-primary);
   }
 
@@ -77,17 +79,27 @@
   .code-text {
     margin: 0;
     font-family: var(--font-mono);
+    color: var(--colour-secondary);
   }
 
-  /* Maraca-shaking animation - triggers on hover/focus/active page */
+  /* Maraca-shaking animation - triggers on hover for desktop, loops on mobile when active */
   .maraca {
     animation: none;
   }
 
-  .btn-sound:hover .maraca,
-  .btn-sound:focus-visible .maraca,
-  .btn-sound.active .maraca {
-    animation: shaking 0.5s infinite;
+  /* Desktop: only on hover/focus */
+  @media (hover: hover) {
+    .btn-sound:hover .maraca,
+    .btn-sound:focus-visible .maraca {
+      animation: shaking 0.5s infinite;
+    }
+  }
+
+  /* Mobile: loop when on active page */
+  @media (hover: none) {
+    .btn-sound.active .maraca {
+      animation: shaking 0.5s infinite;
+    }
   }
 
   @keyframes shaking {
@@ -201,7 +213,7 @@
     }
   }
 
-  /* Typing animation - triggers on hover/focus */
+  /* Typing animation - triggers on hover for desktop, loops on mobile when active */
   .typing {
     --caret: currentcolor;
   }
@@ -217,16 +229,28 @@
     animation: none;
   }
 
-  .btn-code:hover .typing::before,
-  .btn-code:focus-visible .typing::before,
-  .btn-code.active .typing::before {
-    animation: typing 4.5s infinite;
+  /* Desktop: only on hover/focus */
+  @media (hover: hover) {
+    .btn-code:hover .typing::before,
+    .btn-code:focus-visible .typing::before {
+      animation: typing 4.5s infinite;
+    }
+
+    .btn-code:hover .typing::after,
+    .btn-code:focus-visible .typing::after {
+      animation: blink 0.5s linear infinite;
+    }
   }
 
-  .btn-code:hover .typing::after,
-  .btn-code:focus-visible .typing::after,
-  .btn-code.active .typing::after {
-    animation: blink 0.5s linear infinite;
+  /* Mobile: loop when on active page */
+  @media (hover: none) {
+    .btn-code.active .typing::before {
+      animation: typing 4.5s infinite;
+    }
+
+    .btn-code.active .typing::after {
+      animation: blink 0.5s linear infinite;
+    }
   }
 
   @media (prefers-reduced-motion) {

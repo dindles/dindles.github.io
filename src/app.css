@@ -79,9 +79,13 @@
 :root {
   /* Colour Palette */
   --colour-surface: #f5f6df;
+  --colour-surface-light: #fafbf4;
   --colour-primary: #5a8f78;
+  --colour-primary-light: #d4e5dd;
   --colour-secondary: #3a5068;
+  --colour-secondary-light: #c9d1d9;
   --colour-text: #372a51;
+  --colour-text-light: #d3cdd9;
 
   /* Typography - Font Families */
   --font-primary: 'DM Sans', sans-serif;

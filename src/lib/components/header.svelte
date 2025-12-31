@@ -1,5 +1,4 @@
 <script lang="ts">
-  import ThemeSelector from '$lib/components/theme-selector.svelte'
   import blobOutline from '$lib/assets/images/blob-black.svg'
 </script>
 
@@ -7,13 +6,12 @@
   <a href="/" class="home-button" aria-label="Home">
     <img src={blobOutline} alt="Home" class="blob-icon" />
   </a>
-  <ThemeSelector />
 </div>
 
 <style>
   .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 0.75rem;
     background-color: var(--colour-primary);
@@ -38,6 +36,6 @@
   .blob-icon {
     width: 2rem;
     height: 2rem;
-    filter: invert(1);
+    fill: var(--colour-surface-light);
   }
 </style>
