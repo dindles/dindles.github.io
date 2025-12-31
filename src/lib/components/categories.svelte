@@ -48,14 +48,13 @@
     aspect-ratio: 1 / 1;
     border: var(--border-button-primary);
     border-radius: var(--radius-full);
-    background-color: transparent;
+    background-color: var(--colour-surface-light);
     cursor: pointer;
     box-shadow: 3px 3px 0 var(--colour-secondary);
     transition: all var(--transition-default);
   }
 
   .btn-category:hover {
-    background-color: var(--colour-surface-light);
     border-color: var(--colour-primary);
   }
 
