@@ -20,11 +20,7 @@
 
   <!-- CODE -->
   <a href="/code" aria-label="Code projects">
-    <button
-      class="btn-category btn-code"
-      class:active={is_on_code_page}
-      aria-label="Code projects"
-    >
+    <button class="btn-category btn-code" class:active={is_on_code_page} aria-label="Code projects">
       <div class="code-display">
         <span class="code-text typing"></span>
       </div>

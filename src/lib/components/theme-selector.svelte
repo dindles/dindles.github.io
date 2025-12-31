@@ -36,28 +36,28 @@
     currentTheme = $state<ThemeName>('Dusty4')
   }
 
-  export const themeState = new ThemeState()
+  export const THEME_STATE = new ThemeState()
 </script>
 
 <script lang="ts">
-  const themeNames: ThemeName[] = ['Dusty4', 'Baldur']
+  const THEME_NAMES: ThemeName[] = ['Dusty4', 'Baldur']
 
-  function selectTheme(themeName: ThemeName) {
-    themeState.currentTheme = themeName
+  function selectTheme(theme_name: ThemeName) {
+    THEME_STATE.currentTheme = theme_name
   }
 </script>
 
 <div class="theme-selector">
-  {#each themeNames as themeName}
+  {#each THEME_NAMES as theme_name}
     <button
-      onclick={() => selectTheme(themeName)}
+      onclick={() => selectTheme(theme_name)}
       class="theme-button"
-      class:active={themeState.currentTheme === themeName}
-      aria-label="Select {themeName} theme"
-      title={themeName}
+      class:active={THEME_STATE.currentTheme === theme_name}
+      aria-label="Select {theme_name} theme"
+      title={theme_name}
     >
       <div class="theme-preview">
-        {#each Object.values(themes[themeName].colours) as colour}
+        {#each Object.values(themes[theme_name].colours) as colour}
           <div class="colour-swatch" style="background-color: {colour}"></div>
         {/each}
       </div>
