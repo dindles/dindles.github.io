@@ -1,52 +1,21 @@
 <script lang="ts">
-  import { categoryState } from '$lib/state/state.svelte'
-
-  // Sets state on clicks
-  function soundClick() {
-    categoryState.category = 'sound'
-    categoryState.soundVis = 'visible'
-    categoryState.codeVis = 'hidden'
-  }
-
-  function codeClick() {
-    categoryState.category = 'code'
-    categoryState.codeVis = 'visible'
-    categoryState.soundVis = 'hidden'
-  }
+  // No state needed - animations controlled via CSS
 </script>
 
 <div class="categories">
   <!-- SOUNDS -->
-  <a href="/sound">
-    <button
-      onclick={soundClick}
-      onfocus={() => (categoryState.soundVis = 'visible')}
-      class="btn-category"
-    >
-      <!-- shaking maracas -->
-      {#if categoryState.soundVis === 'visible'}
-        <p id="maracasAnim" class="emoji">🪇</p>
-      {:else}
-        <p class="emoji">🪇</p>
-      {/if}
+  <a href="/sound" aria-label="Sound projects">
+    <button class="btn-category btn-sound" aria-label="Sound projects">
+      <p class="emoji maraca">🪇</p>
     </button>
   </a>
 
   <!-- CODE -->
-  <a href="/code">
-    <button
-      onclick={codeClick}
-      onfocus={() => (categoryState.codeVis = 'visible')}
-      class="btn-category"
-    >
-      <!-- scrolling code -->
-      {#if categoryState.codeVis === 'visible'}
-        <div aria-label="let i = 0" class="code-display">
-          <span id="typingAnim" class="code-text"></span>
-        </div>
-      {:else}
-        <p class="code-text code-static">i = 0</p>
-      {/if}
+  <a href="/code" aria-label="Code projects">
+    <button class="btn-category btn-code" aria-label="Code projects">
+      <div class="code-display">
+        <span class="code-text typing"></span>
+      </div>
     </button>
   </a>
 </div>
@@ -60,9 +29,10 @@
   }
 
   .btn-category {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 5rem;
-    text-align: center;
     aspect-ratio: 1 / 1;
     border: 2px double var(--colour-secondary);
     border-radius: 9999px;
@@ -81,8 +51,7 @@
   }
 
   .emoji {
-    padding-top: 0.25rem;
-    margin: 0 auto;
+    margin: 0;
     font-size: 2rem;
     font-family: var(--font-emoji);
     color: var(--colour-secondary);
@@ -90,27 +59,27 @@
   }
 
   .code-display {
-    padding-top: 0.5rem;
     pointer-events: none;
-    height: 2.75rem;
   }
 
   .code-text {
+    margin: 0;
     font-family: var(--font-mono);
   }
 
-  .code-static {
-    pointer-events: none;
+  /* Maraca-shaking animation - triggers on hover/focus */
+  .maraca {
+    animation: none;
   }
 
-  /* Maraca-shaking animation */
-  #maracasAnim {
+  .btn-sound:hover .maraca,
+  .btn-sound:focus-visible .maraca {
     animation: shaking 0.5s infinite;
   }
 
   @keyframes shaking {
-    0% {
-      transform: translateX(0);
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
     }
     25% {
       transform: translateY(-1px) rotate(0deg);
@@ -126,9 +95,6 @@
     }
     75% {
       transform: translateY(-1px) rotate(5deg);
-    }
-    100% {
-      transform: translateY(0) rotate(0);
     }
   }
 
@@ -195,27 +161,37 @@
     }
   }
 
-  #typingAnim {
+  /* Typing animation - triggers on hover/focus */
+  .typing {
     --caret: currentcolor;
   }
 
-  #typingAnim::before {
+  .typing::before {
     content: '';
+    animation: none;
+  }
+
+  .typing::after {
+    content: '';
+    border-right: 1px solid var(--caret);
+    animation: none;
+  }
+
+  .btn-code:hover .typing::before,
+  .btn-code:focus-visible .typing::before {
     animation: typing 4.5s infinite;
   }
 
-  #typingAnim::after {
-    content: '';
-    border-right: 1px solid var(--caret);
+  .btn-code:hover .typing::after,
+  .btn-code:focus-visible .typing::after {
     animation: blink 0.5s linear infinite;
   }
 
   @media (prefers-reduced-motion) {
-    #typingAnim::after {
-      animation: none;
-    }
-    #maracasAnim {
-      animation: none;
+    .typing::before,
+    .typing::after,
+    .maraca {
+      animation: none !important;
     }
   }
 </style>

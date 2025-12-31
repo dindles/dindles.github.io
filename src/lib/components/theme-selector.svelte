@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
   export type ThemeName = 'Dusty4' | 'Baldur'
 
   export interface Theme {
@@ -10,7 +10,7 @@
       text: string
     }
   }
-
+  ;``
   export const themes: Record<ThemeName, Theme> = {
     Dusty4: {
       name: 'Dusty4',
