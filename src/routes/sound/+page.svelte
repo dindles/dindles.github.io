@@ -129,8 +129,8 @@
   .sound-page {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    padding: 1rem;
+    gap: var(--space-xl);
+    padding: var(--space-md);
   }
 
   .embed-container {
@@ -149,21 +149,21 @@
     left: 0;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--space-md);
     align-items: center;
     justify-content: center;
     background-color: var(--colour-surface);
-    border: 2px dotted var(--colour-secondary);
-    border-radius: 0.5rem;
+    border: var(--border-card);
+    border-radius: var(--radius-md);
     z-index: 10;
-    padding: 2rem;
+    padding: var(--space-xl);
   }
 
   .embed-frame {
     width: 100%;
     max-width: 32rem;
     aspect-ratio: 1 / 1;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-md);
   }
 
   .spinner {
@@ -171,7 +171,7 @@
     height: 3rem;
     border: 4px solid var(--colour-surface);
     border-top-color: var(--colour-text);
-    border-radius: 9999px;
+    border-radius: var(--radius-full);
     animation: spin 1s linear infinite;
   }
 
@@ -189,15 +189,15 @@
   }
 
   .retry-button {
-    padding: 0.5rem 1rem;
+    padding: var(--space-sm) var(--space-md);
     background-color: var(--colour-primary);
     color: var(--colour-surface);
     border: 2px solid var(--colour-secondary);
-    border-radius: 0.25rem;
+    border-radius: var(--radius-sm);
     font-family: var(--font-primary);
     font-size: 0.9rem;
     cursor: pointer;
-    transition: all 200ms ease;
+    transition: all var(--transition-default);
   }
 
   .retry-button:hover {
@@ -215,7 +215,7 @@
     font-family: var(--font-primary);
     font-size: 0.9rem;
     border-bottom: 1px dotted var(--colour-secondary);
-    transition: border-color 200ms ease;
+    transition: border-color var(--transition-default);
   }
 
   .fallback-link:hover {

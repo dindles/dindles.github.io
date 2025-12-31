@@ -59,17 +59,20 @@
   }
 
   .project-wrapper {
-    padding: 1.5rem;
+    padding: var(--space-lg);
     padding-bottom: 0;
   }
 
   .card-project {
     width: 20rem;
     margin: 0 auto;
-    text-align: center;
-    border: 2px dotted var(--colour-secondary);
-    cursor: pointer;
-    transition: border-color 200ms ease;
+    border: var(--border-card);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    transition: border-color var(--transition-default);
   }
 
   .card-project:hover {
@@ -77,33 +80,34 @@
   }
 
   .project-title {
-    padding-top: 1.5rem;
     color: var(--colour-text);
+    margin: 0;
+    text-align: center;
   }
 
   .project-description {
-    padding: 1.5rem;
-    max-width: 12rem;
+    text-align: center;
   }
 
   .description-text {
     font-weight: 600;
     color: var(--colour-text);
+    margin: 0;
   }
 
   .project-tags {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-bottom: 1.5rem;
-    column-gap: 1rem;
+    gap: var(--space-sm);
   }
 
   .project-tag {
     font-family: var(--font-mono);
-    border: 1px solid var(--colour-secondary);
-    background-color: var(--colour-primary);
-    max-width: fit-content;
-    padding: 0.25rem 0.5rem;
+    border: var(--border-tag);
+    background-color: var(--colour-surface);
+    color: var(--colour-text);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
   }
 </style>

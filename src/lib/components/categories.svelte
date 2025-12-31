@@ -32,7 +32,7 @@
   .categories {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: var(--space-lg);
     user-select: none;
   }
 
@@ -46,11 +46,11 @@
     justify-content: center;
     width: 5rem;
     aspect-ratio: 1 / 1;
-    border: 2px double var(--colour-secondary);
-    border-radius: 9999px;
+    border: var(--border-button-primary);
+    border-radius: var(--radius-full);
     cursor: pointer;
     box-shadow: 3px 3px 0 var(--colour-secondary);
-    transition: all 200ms ease;
+    transition: all var(--transition-default);
   }
 
   .btn-category:hover {
