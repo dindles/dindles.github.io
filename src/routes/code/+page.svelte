@@ -1,13 +1,15 @@
 <script lang="ts">
+  import BeatjieLogo from '$lib/components/beatjie-logo.svelte'
+
   const code_projects = [
     {
       name: 'Beatjie',
-      description: 'Have fun make beats',
+      description: 'little web groovebox',
       stack: ['Svelte', 'Sveltekit', 'TypeScript', 'CSS', 'ToneJS'],
       font: '',
       fontColor: 'text-secondary-dark',
       bgColor: '',
-      link1: '',
+      link1: 'https://dindles.net/beatjie',
       link2: '',
     },
   ]
@@ -17,7 +19,21 @@
   {#each code_projects as project}
     <div class="project-wrapper">
       <div class="card-project {project.bgColor}">
-        <h2 class="project-title">{project.name}</h2>
+        <div class="logo-wrapper">
+          <BeatjieLogo size={120} interactive={true} />
+        </div>
+        {#if project.link1}
+          <a
+            href={project.link1}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-title-link"
+          >
+            <h2 class="project-title">{project.name}</h2>
+          </a>
+        {:else}
+          <h2 class="project-title">{project.name}</h2>
+        {/if}
         <div class="project-description">
           <p class="description-text">{project.description}</p>
         </div>
@@ -59,10 +75,29 @@
     border-color: var(--colour-primary);
   }
 
+  .logo-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-sm);
+  }
+
+  .project-title-link {
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+
   .project-title {
     color: var(--colour-text);
     margin: 0;
     text-align: center;
+    border-bottom: 1px dotted transparent;
+    display: inline-block;
+    transition: border-color var(--transition-default);
+  }
+
+  .project-title-link:hover .project-title {
+    border-bottom-color: var(--colour-secondary);
   }
 
   .project-description {
