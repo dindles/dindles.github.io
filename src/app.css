@@ -77,7 +77,7 @@
 }
 
 :root {
-  /* Colour Palette */
+  /* Palette */
   --colour-surface: #f5f6df;
   --colour-surface-light: #fafbf4;
   --colour-primary: #5a8f78;
@@ -87,30 +87,29 @@
   --colour-text: #372a51;
   --colour-text-light: #d3cdd9;
 
-  /* Typography - Font Families */
+  /* Typography */
   --font-primary: 'DM Sans', sans-serif;
   --font-mono: 'DM Mono', monospace;
   --font-emoji: 'Noto Emoji Regular', 'Noto Emoji', sans-serif;
 
-  /* Spacing System */
+  /* Spacing */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
   --space-lg: 1.5rem;
   --space-xl: 2rem;
 
-  /* Border Radius */
+  /* Borders */
+  --border-card: 2px dotted var(--colour-secondary);
+  --border-button-primary: 2px double var(--colour-secondary);
+  --border-tag: 1px solid var(--colour-secondary);
+
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-full: 9999px;
 
   /* Transitions */
   --transition-default: 200ms ease;
-
-  /* Border Patterns */
-  --border-card: 2px dotted var(--colour-secondary);
-  --border-button-primary: 2px double var(--colour-secondary);
-  --border-tag: 1px solid var(--colour-secondary);
 }
 
 *,
