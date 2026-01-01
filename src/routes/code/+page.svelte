@@ -10,26 +10,6 @@
       link1: '',
       link2: '',
     },
-    {
-      name: 'This website',
-      description: 'Welcome!',
-      stack: ['Svelte', 'Sveltekit', 'Typescript', 'CSS'],
-      font: '',
-      fontColor: 'text-secondary-dark',
-      bgColor: '',
-      link1: '',
-      link2: '',
-    },
-    {
-      name: 'The George Saunders Escalation Exercise',
-      description: 'My proud first project, glowing neon and all.',
-      stack: ['HTML', 'CSS', 'JavaScript', 'Python'],
-      font: '',
-      fontColor: 'text-secondary-dark',
-      bgColor: '',
-      link1: '',
-      link2: '',
-    },
   ]
 </script>
 

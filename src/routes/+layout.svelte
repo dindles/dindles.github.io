@@ -3,7 +3,6 @@
   import Meta from '$lib/components/meta.svelte'
   import Header from '$lib/components/header.svelte'
   import Footer from '$lib/components/footer.svelte'
-  import Intro from '$lib/components/intro.svelte'
   import Categories from '$lib/components/categories.svelte'
   import ViewTransitions from '$lib/components/view-transitions.svelte'
   interface Props {
@@ -19,7 +18,7 @@
 </svelte:head>
 
 <!-- Access the browser's view transitions API on navigation -->
-<ViewTransitions />
+<!-- <ViewTransitions /> -->
 
 <div class="page-wrapper">
   <Header />
@@ -43,7 +42,7 @@
     padding: var(--space-lg);
   }
 
-  /* Remove scrollbar without preventing scrolling */
+  /* Remove scrollbar */
   :global(body::-webkit-scrollbar) {
     display: none;
   }
