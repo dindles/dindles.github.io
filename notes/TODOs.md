@@ -21,7 +21,7 @@
 
 ## Issues
 
-- no-scrollbar not working on FireFox
+- ~~no-scrollbar not working on FireFox~~ fixed: `scrollbar-width: none` moved from body to html
 
 ## Readme
 

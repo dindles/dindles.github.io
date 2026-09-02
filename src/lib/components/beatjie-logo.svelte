@@ -1,16 +1,16 @@
 <script lang="ts">
   interface Props {
     size?: number // Size in pixels (default: 200)
-    hue?: number // Initial hue from available palette (default: random)
+    hue?: number // Initial hue from available palette (default: 140)
     interactive?: boolean // Enable click to change color (default: false)
   }
 
-  let { size = 200, hue, interactive = false }: Props = $props()
+  // A fixed initial hue keeps the prerendered and hydrated markup identical
+  let { size = 200, hue = 140, interactive = false }: Props = $props()
 
   const AVAILABLE_HUES = [30, 90, 140, 200, 280, 330]
-  let current_hue = $derived(
-    hue ?? AVAILABLE_HUES[Math.floor(Math.random() * AVAILABLE_HUES.length)]
-  )
+  // svelte-ignore state_referenced_locally -- hue is only the starting value; clicks own it after that
+  let current_hue = $state(hue)
 
   function handleClick() {
     if (!interactive) return

@@ -4,7 +4,6 @@
   import Header from '$lib/components/header.svelte'
   import Footer from '$lib/components/footer.svelte'
   import Categories from '$lib/components/categories.svelte'
-  import ViewTransitions from '$lib/components/view-transitions.svelte'
   interface Props {
     children?: import('svelte').Snippet
   }
@@ -16,9 +15,6 @@
   <title>Dindles</title>
   <Meta />
 </svelte:head>
-
-<!-- Access the browser's view transitions API on navigation -->
-<!-- <ViewTransitions /> -->
 
 <div class="page-wrapper">
   <Header />
@@ -47,7 +43,8 @@
     display: none;
   }
 
-  :global(body) {
+  /* Firefox scrolls the root element, so scrollbar-width must live on html */
+  :global(html) {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
